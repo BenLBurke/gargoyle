@@ -26,7 +26,7 @@ def see_wait_times():
             parks_resp.close()
             for company in companies:
                 if company['name'] == 'Walt Disney Attractions':
-                    print('got wd')
+                    # print('got wd')
                     for park in company['parks']:
                         if park['name'] == 'Disneyland':
                             dl_id = park['id']
@@ -51,8 +51,8 @@ def see_wait_times():
                                 is_open = ride['is_open']
                                 found = True
                                 break
-            wait_times_resp.close()
-            del data  # Free memory explicitly
+                wait_times_resp.close()
+                # del data  # Free memory explicitly
                 if found:
                     status = 'not' if not is_open else 'definitely'
                     print(f"Haunted Mansion is {status} open. Wait time is {wait_time} min.")
@@ -60,7 +60,7 @@ def see_wait_times():
                     print("Haunted Mansion not found.")
             else:
                 print(f"Error: Status code {wait_times_resp.status_code}")
-            gc.collec()
+            gc.collect()
         except Exception as e:
             print(f"Error retrieving ride data: {e}")
 
